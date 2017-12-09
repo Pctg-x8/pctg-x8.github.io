@@ -6,6 +6,7 @@ html,body,div,a,p,h1,h2,h3,h4,h5,h6
   text-decoration: none;
   line-height: 1.2em;
   font-size: 100%;
+  font-weight: normal;
 }
 ul,li { list-style-type: none; }
 
