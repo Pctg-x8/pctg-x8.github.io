@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>objectivegl.core</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head><body>
+<div class="box">
+<h1>objectivegl.core</h1>
+<div class="header">
+ High-level OpenGL Wrapper/Helpers: Core Package
+<br><br>
+<b>Authors:</b><br>
+S.Percentage
+ </div>
+
+<br><br>
+
+<dl><dt><big><a name="PixelFormat"></a>enum <u>PixelFormat</u>: uint;
+</big></dt>
+<dd>Pixel Format for Textures<br><br>
+
+<dl><dt><big><a name="PixelFormat.RGBA"></a><u>RGBA</u></big></dt>
+<dd>32bpp full color<br><br>
+
+</dd>
+<dt><big><a name="PixelFormat.Grayscale"></a><u>Grayscale</u></big></dt>
+<dd>8bpp single color<br><br>
+
+</dd>
+</dl>
+</dd>
+<dt><big><a name="Texture"></a>class <u>Texture</u>(GLenum TextureType);
+</big></dt>
+<dd>OpenGL <u>Texture</u> Interfacing<br><br>
+
+</dd>
+<dt><big><a name="Texture2D"></a>class <u>Texture2D</u>: <u>objectivegl.core.Texture!3553u.Texture</u>;
+</big></dt>
+<dd>OpenGL <u>Texture2D</u> Representation<br><br>
+
+<dl><dt><big><a name="Texture2D.newEmpty"></a>static auto <u>newEmpty</u>(int <i>width</i>, int <i>height</i>, PixelFormat <i>format</i>);
+</big></dt>
+<dd>Makes empty texture<br><br>
+
+</dd>
+<dt><big><a name="Texture2D.update"></a>void <u>update</u>(int <i>x</i>, int <i>y</i>, int <i>width</i>, int <i>height</i>, const(ubyte)* <i>pixels</i>, PixelFormat <i>format</i>);
+</big></dt>
+<dd>Updates texture<br><br>
+
+</dd>
+</dl>
+</dd>
+<dt><big><a name="Buffer"></a>class <u>Buffer</u>(GLenum BufferType);
+</big></dt>
+<dd>OpenGL <u>Buffer</u> Object Interfacing<br><br>
+
+</dd>
+<dt><big><a name="VertexArray"></a>class <u>VertexArray</u>;
+</big></dt>
+<dd>OpenGL VertexArrayObject Representation<br><br>
+
+<dl><dt><big><a name="VertexArray.fromSlice"></a>auto <u>fromSlice</u>(T)(const T[] <i>slice</i>, const ShaderProgram <i>program</i>);
+</big></dt>
+<dd>Makes new Vertex Array Object from <i>slice</i> to be rendered with <i>program</i><br><br>
+
+</dd>
+<dt><big><a name="VertexArray.drawInstanced"></a>void <u>drawInstanced</u>(GLenum primitiveType)(GLint <i>count</i>);
+</big></dt>
+<dd>Instanced drawing shorthand<br><br>
+
+</dd>
+</dl>
+</dd>
+<dt><big><a name="UniformBuffer"></a>class <u>UniformBuffer</u>(BufferStructureT): Buffer!GL_UNIFORM_BUFFER;
+</big></dt>
+<dd>OpenGL Uniform Buffer Representation<br><br>
+
+<dl><dt><big><a name="UniformBuffer.newStatic"></a>static auto <u>newStatic</u>(BufferStructureT <i>buffer</i>);
+</big></dt>
+<dd>Makes new Static(Modified once, used many times) Uniform Buffer with Data<br><br>
+
+</dd>
+<dt><big><a name="UniformBuffer.newStatic.2"></a>static auto <u>newStatic</u>();
+</big></dt>
+<dd>Makes new Static(Modified once, used many times) Uniform Buffer<br><br>
+
+</dd>
+<dt><big><a name="UniformBuffer.update"></a>void <u>update</u>(BufferStructureT <i>buffer</i>);
+</big></dt>
+<dd>Updates <i>buffer</i> data<br><br>
+
+</dd>
+</dl>
+</dd>
+<dt><big><a name="element"></a>struct <u>element</u>;
+</big></dt>
+<dd><b>UDA:</b><br>
+Mark field as Input Element<br><br>
+
+<dl><dt><big><a name="element.attrName"></a>string <u>attrName</u>;
+</big></dt>
+<dd>Attribute Name in shader<br><br>
+
+</dd>
+<dt><big><a name="element.normalized"></a>bool <u>normalized</u>;
+</big></dt>
+<dd>Is value <u>normalized</u>?(default is <b>false</b>)<br><br>
+
+</dd>
+</dl>
+</dd>
+<dt><big><a name="ShaderType"></a>enum <u>ShaderType</u>: uint;
+</big></dt>
+<dd>Shader Source Types<br><br>
+
+<dl><dt><big><a name="ShaderType.Vertex"></a><u>Vertex</u></big></dt>
+<dd><u>Vertex</u> Shader<br><br>
+
+</dd>
+<dt><big><a name="ShaderType.Fragment"></a><u>Fragment</u></big></dt>
+<dd><u>Fragment</u>(Pixel) Shader<br><br>
+
+</dd>
+<dt><big><a name="ShaderType.Geometry"></a><u>Geometry</u></big></dt>
+<dd><u>Geometry</u> Shader<br><br>
+
+</dd>
+</dl>
+</dd>
+<dt><big><a name="ShaderProgram"></a>class <u>ShaderProgram</u>;
+</big></dt>
+<dd>OpenGL <u>ShaderProgram</u> Representation<br><br>
+
+<dl><dt><big><a name="ShaderProgram.fromSources"></a>auto <u>fromSources</u>(VertexDataT, ShaderSources...)();
+</big></dt>
+<dd>Make shader program from source codes<br><br>
+
+</dd>
+<dt><big><a name="ShaderProgram.activate"></a>const void <u>activate</u>();
+</big></dt>
+<dd>Activates(Uses) shader program<br><br>
+
+</dd>
+<dt><big><a name="ShaderProgram.uniforms"></a>UniformLocations <u>uniforms</u>;
+</big></dt>
+<dd>Field like Uniform Accessors<br><br>
+
+</dd>
+<dt><big><a name="ShaderProgram.uniformBlocks"></a>UniformBlockIndices <u>uniformBlocks</u>;
+</big></dt>
+<dd>Field like Uniform Block Binding<br><br>
+
+</dd>
+</dl>
+</dd>
+<dt><big><a name="BlendFunc"></a>alias <u>BlendFunc</u> = std.typecons.Tuple!(uint, "srcBlend", uint, "destBlend").Tuple;
+</big></dt>
+<dd>Blend Function<br><br>
+
+</dd>
+<dt><big><a name="BlendFunctions"></a>class <u>BlendFunctions</u>;
+</big></dt>
+<dd>Predefined Blend Functions<br><br>
+
+</dd>
+<dt><big><a name="GLDevice"></a>class <u>GLDevice</u>;
+</big></dt>
+<dd>OpenGL Device Representation<br><br>
+
+<dl><dt><big><a name="GLDevice.TextureUnits"></a>class <u>TextureUnits</u>;
+</big></dt>
+<dd>Texture Units<br><br>
+<b>Examples:</b><br>
+Accessing texture unit with index
+<pre class="d_code">
+GLDevice.<u>TextureUnits</u>[0] = texture;
+</pre>
+<br><br>
+</dd>
+<dt><big><a name="GLDevice.BindingPoint"></a>class <u>BindingPoint</u>;
+</big></dt>
+<dd>Binding Point Table<br><br>
+
+</dd>
+<dt><big><a name="GLDevice.Vertices"></a>class <u>Vertices</u>;
+</big></dt>
+<dd>Input Assembler: Vertex Buffer and Input Layout<br><br>
+
+</dd>
+<dt><big><a name="GLDevice.RasterizerState"></a>class <u>RasterizerState</u>;
+</big></dt>
+<dd>Rasterizer State<br><br>
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+<hr><small>Page generated by <a href="https://dlang.org/ddoc.html">Ddoc</a>. Copyright 2016 S.Percentage</small>
+</div>
+</body></html>
